@@ -7,7 +7,7 @@ This project was generated with the [Angular Full-Stack Generator](https://githu
   
   
   ```typescript
-      /**
+     /**
      * Express configuration
      */
 
@@ -40,7 +40,7 @@ This project was generated with the [Angular Full-Stack Generator](https://githu
       if(env === 'production') {
         app.use(favicon(path.join(config.root, 'client', 'favicon.ico')));
       }
-
+      // Added CORS to allow all request types, DONT DO THIS IN PRODUCTION!
       var allowCrossDomain = function(req, res, next) {
         res.header('Access-Control-Allow-Origin', '*');
         res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
@@ -61,7 +61,7 @@ This project was generated with the [Angular Full-Stack Generator](https://githu
       app.use(methodOverride());
       app.use(cookieParser());
       app.use(passport.initialize());
-      app.use(allowCrossDomain)
+      app.use(allowCrossDomain);        //Load the CORS module into the ExpressJS app.
 
 
       // Persist sessions with MongoStore / sequelizeStore
